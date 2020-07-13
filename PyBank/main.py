@@ -53,6 +53,7 @@ with open(budget_data, 'r') as csvfile:
     Leastloc = Change_Total.index(Greatest_decrease)
     print(List_month[Leastloc + 1])
 
+    # Print statement for Financial analysis
     print(f"Financial Analysis\n"
     f"----------------------------\n"
     f"Total Months: {Total_month}\n"
@@ -61,6 +62,25 @@ with open(budget_data, 'r') as csvfile:
     f"Greatest Increase in Profits: {List_month[Greatestloc + 1]} ({Greatest_increase})\n"
     f"Greatest Decrease in Profits: {List_month[Leastloc + 1]} ({Greatest_decrease})")
 
+
+file = open('FinancialAnlysis.txt','w') 
+file.write(f"Financial Analysis\n"
+    f"----------------------------\n"
+    f"Total Months: {Total_month}\n"
+    f"Total: {Profit_loss}\n"
+    f"Average  Change: {Average_Change}\n"
+    f"Greatest Increase in Profits: {List_month[Greatestloc + 1]} ({Greatest_increase})\n"
+    f"Greatest Decrease in Profits: {List_month[Leastloc + 1]} ({Greatest_decrease})")
+
+# os.path.join 
+# open(["Analysis"], 'w') as [txtfile];
+# [txtfile].write(f"Financial Analysis\n"
+#     f"----------------------------\n"
+#     f"Total Months: {Total_month}\n"
+#     f"Total: {Profit_loss}\n"
+#     f"Average  Change: {Average_Change}\n"
+#     f"Greatest Increase in Profits: {List_month[Greatestloc + 1]} ({Greatest_increase})\n"
+#     f"Greatest Decrease in Profits: {List_month[Leastloc + 1]} ({Greatest_decrease})")
 
 
    
