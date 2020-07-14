@@ -36,22 +36,19 @@ with open(budget_data, 'r') as csvfile:
     for i in range(0, len(Change_Profit_loss)-1):
         change = Change_Profit_loss[i+1] - Change_Profit_loss[i]
         Change_Total.append(change)
-    print(len(Change_Total))
-    print(Total_month)
+    
+    #Calculate average Change
     Average_Change = sum(Change_Total)/len(Change_Total)
-    print(Average_Change)
 
     #The greatest increase in profits (date and amount) over the entire period
     Greatest_increase = max(Change_Total)
     Greatestloc = Change_Total.index(Greatest_increase)
-    print(List_month[Greatestloc + 1]) # +1 because first row does not have change
-    print(Greatest_increase)
       
     #The greatest decrease in losses (date and amount) over the entire period
     Greatest_decrease = min(Change_Total)
-    print(Greatest_decrease)
+    
     Leastloc = Change_Total.index(Greatest_decrease)
-    print(List_month[Leastloc + 1])
+    
 
     # Print statement for Financial analysis
     print(f"Financial Analysis\n"
@@ -62,9 +59,10 @@ with open(budget_data, 'r') as csvfile:
     f"Greatest Increase in Profits: {List_month[Greatestloc + 1]} ({Greatest_increase})\n"
     f"Greatest Decrease in Profits: {List_month[Leastloc + 1]} ({Greatest_decrease})")
 
-
-file = open('FinancialAnlysis.txt','w') 
-file.write(f"Financial Analysis\n"
+# Print to a text file in Analysis Folder
+FinancialAnlysis = os.path.join("Analysis", "FinancialAnalysis.txt")
+with open (FinancialAnlysis, 'w') as txtfile:
+    txtfile.write(f"Financial Analysis\n"
     f"----------------------------\n"
     f"Total Months: {Total_month}\n"
     f"Total: {Profit_loss}\n"
@@ -72,15 +70,8 @@ file.write(f"Financial Analysis\n"
     f"Greatest Increase in Profits: {List_month[Greatestloc + 1]} ({Greatest_increase})\n"
     f"Greatest Decrease in Profits: {List_month[Leastloc + 1]} ({Greatest_decrease})")
 
-# os.path.join 
-# open(["Analysis"], 'w') as [txtfile];
-# [txtfile].write(f"Financial Analysis\n"
-#     f"----------------------------\n"
-#     f"Total Months: {Total_month}\n"
-#     f"Total: {Profit_loss}\n"
-#     f"Average  Change: {Average_Change}\n"
-#     f"Greatest Increase in Profits: {List_month[Greatestloc + 1]} ({Greatest_increase})\n"
-#     f"Greatest Decrease in Profits: {List_month[Leastloc + 1]} ({Greatest_decrease})")
+
+
 
 
    

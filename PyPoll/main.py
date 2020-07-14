@@ -34,23 +34,38 @@ with open(election_data, 'r') as csvfile:
     # The total number of votes and percentage of votes each candidate won
             Candidate_Votes[candidate_name] = 0
         Candidate_Votes[candidate_name] = Candidate_Votes[candidate_name] + 1
-    print(candidates)
-    for x, y in Candidate_Votes.items():
-        print(x, y)
-        percent_votes = (y / total_voters) *100 
-        print(percent_votes)
+    
+    print(f"Election Results\n"
+    f"--------------------------------\n"
+    f"Total Votes: {total_voters}\n"
+    f"---------------------------------\n")
+
+    for x in Candidate_Votes:
+        percent_votes = (Candidate_Votes.get(x)/total_voters) *100 
+        print(f"{x}: ({Candidate_Votes.get(x)}), {percent_votes:.2f}% \n")
 
     # The winner of the election
     import operator
     winner = max(Candidate_Votes.items(), key=operator.itemgetter(1))[0]
-    print(winner)
-
-    print(f"Election Results\n"
-    f"--------------------------------\n"
-    f"Total Votes: {total_voters}\n"
-    f"---------------------------------\n"
-    f"{x, y}, {percent_votes}\n"
-    f"---------------------------------\n"
+    print(f"---------------------------------\n"
     f"Winner: {winner}\n"
     f"---------------------------------\n")
 
+# Print to txt file
+    PollAnlysis = os.path.join("Analysis", "PollAnalysis.txt")
+    with open (PollAnlysis, 'w') as txtfile:
+        txtfile.write(f"Election Results\n"
+        f"--------------------------------\n"
+        f"Total Votes: {total_voters}\n"
+        f"---------------------------------\n")
+
+        for x in Candidate_Votes:
+            percent_votes = (Candidate_Votes.get(x)/total_voters) *100 
+            txtfile.write(f"{x}: ({Candidate_Votes.get(x)}), {percent_votes:.2f}% \n")
+
+        # The winner of the election
+        import operator
+        winner = max(Candidate_Votes.items(), key=operator.itemgetter(1))[0]
+        txtfile.write(f"---------------------------------\n"
+        f"Winner: {winner}\n"
+        f"---------------------------------\n")
