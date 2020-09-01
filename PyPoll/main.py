@@ -62,8 +62,7 @@ with open(election_data, 'r') as csvfile:
         for x in Candidate_Votes:
             percent_votes = (Candidate_Votes.get(x)/total_voters) *100 
             txtfile.write(f"{x}: ({Candidate_Votes.get(x)}), {percent_votes:.2f}% \n")
-
-        # The winner of the election
+    
         import operator
         winner = max(Candidate_Votes.items(), key=operator.itemgetter(1))[0]
         txtfile.write(f"---------------------------------\n"
